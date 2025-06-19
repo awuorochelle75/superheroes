@@ -36,13 +36,13 @@ This is a RESTful API developed using Flask that enables seamless management of 
 1. **Clone the repository**   
 Open your terminal and run the following command:
     ```sh
-    $git clone https://github.com/awuorochelle75/webook-website.git
+    $git clone https://github.com/awuorochelle75/superheroes.git
 
 
 
 2. **Navigate to the project folder**
     ```sh
-        $cd webook-website
+        $cd superheoroes
 
 3. **Install dependencies**
     ```sh
