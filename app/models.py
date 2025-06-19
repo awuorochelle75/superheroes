@@ -8,11 +8,18 @@ class Hero(db.Model):
     name = db.Column(db.String, nullable=False)
     super_name = db.Column(db.String, nullable=False)
 
-    # One Hero has many HeroPowers
     hero_powers = db.relationship('HeroPower', backref='hero', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f"<Hero {self.name}>"
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "super_name": self.super_name
+            # Optional: you can add "powers": [hp.to_dict() for hp in self.hero_powers]
+        }
 
 # Power model
 class Power(db.Model):
@@ -22,13 +29,19 @@ class Power(db.Model):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
 
-    # One Power has many HeroPowers
     hero_powers = db.relationship('HeroPower', backref='power', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f"<Power {self.name}>"
 
-# HeroPower model (join table with extra column: strength)
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description
+        }
+
+# HeroPower model
 class HeroPower(db.Model):
     __tablename__ = 'hero_powers'
 
@@ -40,3 +53,10 @@ class HeroPower(db.Model):
 
     def __repr__(self):
         return f"<HeroPower {self.strength}>"
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "strength": self.strength,
+            "power": self.power.to_dict()
+        }
