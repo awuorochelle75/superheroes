@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy.orm import validates
 
 # Hero model
 class Hero(db.Model):
@@ -18,7 +19,6 @@ class Hero(db.Model):
             "id": self.id,
             "name": self.name,
             "super_name": self.super_name
-            # Optional: you can add "powers": [hp.to_dict() for hp in self.hero_powers]
         }
 
 # Power model
@@ -41,6 +41,12 @@ class Power(db.Model):
             "description": self.description
         }
 
+    @validates('description')
+    def validate_description(self, key, value):
+        if not value or len(value.strip()) < 20:
+            raise ValueError("Description must be at least 20 characters long.")
+        return value
+
 # HeroPower model
 class HeroPower(db.Model):
     __tablename__ = 'hero_powers'
@@ -60,3 +66,10 @@ class HeroPower(db.Model):
             "strength": self.strength,
             "power": self.power.to_dict()
         }
+
+    @validates('strength')
+    def validate_strength(self, key, value):
+        allowed = ['Strong', 'Weak', 'Average']
+        if value not in allowed:
+            raise ValueError("Strength must be 'Strong', 'Weak', or 'Average'")
+        return value
