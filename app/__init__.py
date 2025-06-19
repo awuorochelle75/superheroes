@@ -14,5 +14,9 @@ app.config.from_object("config.Config")
 db.init_app(app)
 migrate.init_app(app, db)
 
-# Import routes and models so they are registered with the app
-from app import routes, models
+# Import models so migrations can detect them
+from app import models
+
+# Register routes blueprint
+from app.routes import app_routes
+app.register_blueprint(app_routes)
