@@ -26,9 +26,9 @@ This is a RESTful API developed using Flask that enables seamless management of 
 
     - Python / Flask
 
-    -SQLAlchemy / Flask-Migrate
+    - SQLAlchemy / Flask-Migrate
 
-    -SQLite
+    - SQLite
 
     
 
@@ -54,28 +54,32 @@ Open your terminal and run the following command:
         $pipenv shell
 
 
-5.**Set up your environment and database**
-    ```sh
-   $flask db init
-    flask db migrate -m "Initial migration"
-    flask db upgrade
-    python -m app.seed  # Seed the database
+5. **Set up your environment and database**
 
-6.**Run the server**
+    ```sh
+        $flask db init
+        flask db migrate -m "Initial migration"
+        flask db upgrade
+        python -m app.seed  
+
+
+6. **Run the server**
+
     ```sh
         $flask run
+        
 
 7.you can check http://localhost:5000/heroes to test
 
 
 ## API Testing
--Use Postman to test the provided endpoints.
+- Use Postman to test the provided endpoints.
 
 
 ## Contact Information
-📧 Email: awuorochelle@gmail.com
+ Email: awuorochelle@gmail.com
 
 ## License
-📜 MIT License @2025 Rochelle Awuor
+ MIT License @2025 Rochelle Awuor
 
 
