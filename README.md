@@ -1,5 +1,5 @@
 ## Superheroes API
-**Rochelle Awuor** -  Phase 4  Code Challenge
+**Phase 4  Code Challenge**
 
 ## **Description**
 This is a RESTful API developed using Flask that enables seamless management of superheroes and their unique abilities. With this API, users can explore a list of heroes, update power descriptions, and assign strengths of various powers to different heroes. 
@@ -46,56 +46,31 @@ Open your terminal and run the following command:
 
 3. **Install dependencies**
     ```sh
-        $npm install
+        $pipenv install flask flask_sqlalchemy flask_migrate
 
-4. **Start the JSON Server**
-The JSON server simulates a backend API for fetching and updating book data. Run:
+
+4. **Create virtual environment**
     ```sh
-        $json-server --watch db.json
-
-5.Run the Application
-
-    - Open index.html in your web browser
-
-    - You can also use Live Server if using VS Code
-
-## **How to Use WeBook**
-- Browse Books: View a collection of books displayed on the homepage.
-
-- Search Books: Use the search bar to find books by title.
-
-- Filter by Genre: Select a genre from the dropdown to filter books.
-
-- View Book Details: Click on a book to see more details, including title, author, description, and price.
-
-- Purchase Books: Click "Purchase" to buy a book, with a confirmation alert.
+        $pipenv shell
 
 
-## Live Demo
-🔗 Access the web application here:
-https://webook-website.vercel.app/
+5.**Set up your environment and database**
+    ```sh
+   $flask db init
+    flask db migrate -m "Initial migration"
+    flask db upgrade
+    python -m app.seed  # Seed the database
+
+6.**Run the server**
+    ```sh
+        $flask run
+
+7.you can check http://localhost:5000/heroes to test
 
 
-## JSON Server (API Endpoints)
-The app interacts with a local JSON server that acts as the backend. Here are the available API endpoints:
+## API Testing
+-Use Postman to test the provided endpoints.
 
-        GET /books        # Fetch all books
-        GET /books/:id    # Fetch a single book by ID
-    
-
-## Technologies Used
-- This project is built using:
-
-    - HTML for structure
-
-    - CSS for styling
-
-    - JavaScript for interactivity
-
-    - JSON Server for mock API
-
-## Dependencies
-Google (for external resources)
 
 ## Contact Information
 📧 Email: awuorochelle@gmail.com
