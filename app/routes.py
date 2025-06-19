@@ -3,6 +3,11 @@ from app.models import db, Hero, Power, HeroPower
 
 app_routes = Blueprint("app_routes", __name__)
 
+# GET /
+@app_routes.route("/", methods=["GET"])
+def homepage():
+    return jsonify({"message": "Welcome to the Superheroes API!"}), 200
+
 # GET /heroes
 @app_routes.route("/heroes", methods=["GET"])
 def get_heroes():
