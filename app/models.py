@@ -1,7 +1,7 @@
 from app import db
 from sqlalchemy.orm import validates
 
-# Hero model
+
 class Hero(db.Model):
     __tablename__ = 'heroes'
 
@@ -21,7 +21,6 @@ class Hero(db.Model):
             "super_name": self.super_name
         }
 
-# Power model
 class Power(db.Model):
     __tablename__ = 'powers'
 
@@ -47,7 +46,7 @@ class Power(db.Model):
             raise ValueError("Description must be at least 20 characters long.")
         return value
 
-# HeroPower model
+
 class HeroPower(db.Model):
     __tablename__ = 'hero_powers'
 
