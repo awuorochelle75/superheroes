@@ -3,12 +3,10 @@ from app.models import db, Hero, Power, HeroPower
 
 app_routes = Blueprint("app_routes", __name__)
 
-# GET /
-@app_routes.route("/", methods=["GET"])
-def homepage():
-    return jsonify({"message": "Welcome to the Superheroes API!"}), 200
 
-# GET /heroes
+
+
+
 @app_routes.route("/heroes", methods=["GET"])
 def get_heroes():
     heroes = Hero.query.all()
@@ -18,7 +16,7 @@ def get_heroes():
         "super_name": hero.super_name
     } for hero in heroes]), 200
 
-# GET /heroes/<id>
+
 @app_routes.route("/heroes/<int:id>", methods=["GET"])
 def get_hero_by_id(id):
     hero = Hero.query.get(id)
@@ -41,13 +39,13 @@ def get_hero_by_id(id):
         ]
     }), 200
 
-# GET /powers
+
 @app_routes.route("/powers", methods=["GET"])
 def get_powers():
     powers = Power.query.all()
     return jsonify([power.to_dict() for power in powers]), 200
 
-# GET /powers/<id>
+
 @app_routes.route("/powers/<int:id>", methods=["GET"])
 def get_power_by_id(id):
     power = Power.query.get(id)
@@ -56,7 +54,6 @@ def get_power_by_id(id):
 
     return jsonify(power.to_dict()), 200
 
-# PATCH /powers/<id>
 @app_routes.route("/powers/<int:id>", methods=["PATCH"])
 def patch_power(id):
     power = Power.query.get(id)
@@ -72,7 +69,7 @@ def patch_power(id):
         db.session.rollback()
         return jsonify({"errors": [str(e)]}), 400
 
-# POST /hero_powers
+
 @app_routes.route("/hero_powers", methods=["POST"])
 def create_hero_power():
     data = request.get_json()
