@@ -4,7 +4,9 @@ from app.models import db, Hero, Power, HeroPower
 app_routes = Blueprint("app_routes", __name__)
 
 
-
+@app_routes.route("/", methods=["GET"])
+def homepage():
+    return jsonify({"message": "Superheroes API!"}), 200
 
 
 @app_routes.route("/heroes", methods=["GET"])
@@ -53,6 +55,7 @@ def get_power_by_id(id):
         return jsonify({"error": "Power not found"}), 404
 
     return jsonify(power.to_dict()), 200
+
 
 @app_routes.route("/powers/<int:id>", methods=["PATCH"])
 def patch_power(id):
